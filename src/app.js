@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Configurar CORS
 const corsOptions = {
-  origin: ['http://localhost:3001', 'https://zero01-back-restaurant-erp.onrender.com'], // Permitir ambos orígenes
+  origin: ['*'], // Permitir ambos orígenes
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Permitir cookies y credenciales
   allowedHeaders: ['Content-Type', 'Authorization'], // Permitir estos encabezados
@@ -40,7 +40,7 @@ sequelize
 sequelize
   .sync(
     { 
-      force: true 
+      // force: true 
     }
   )
   .then(() => console.log("Modelos sincronizados con la base de datos"))
