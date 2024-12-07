@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Configurar CORS
 const corsOptions = {
-  origin: ['*', 'https://api-template-j8d7.onrender.com'], // Permitir todos los orígenes
+  origin: ['*'], // Permitir todos los orígenes
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Permitir cookies y credenciales
   allowedHeaders: ['Content-Type', 'Authorization'], // Permitir estos encabezados
