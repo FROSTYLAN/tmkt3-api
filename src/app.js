@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Configurar CORS
 const corsOptions = {
-  origin: ['*'], // Permitir ambos orígenes
+  origin: ['*'], // Permitir todos los orígenes
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Permitir cookies y credenciales
   allowedHeaders: ['Content-Type', 'Authorization'], // Permitir estos encabezados
@@ -51,9 +51,9 @@ const swaggerOptions = {
   swaggerDefinition: {
     openapi: "3.0.0",
     info: {
-      title: "API de sistema",
+      title: "API de TKMT3",
       version: "1.0.0",
-      description: "API para aprobar el curso",
+      description: "API de uso sospechoso",
     },
     servers: [{ url: process.env.URL_API }],
   },
@@ -62,6 +62,11 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// Redirigir la ruta principal a /api-docs
+app.get("/", (req, res) => {
+  res.redirect("/api-docs");
+});
 
 // Rutas
 const { AuthRoutes } = require("./routes/auth.routes");
