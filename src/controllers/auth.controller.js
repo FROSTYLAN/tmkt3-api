@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const { User } = require("../models/user.model");
 const { Role } = require("../models/role.model");
+const { Op } = require("sequelize");
 
 const registerSchema = Joi.object({
   email: Joi.string().min(5).max(255).email().required().messages({
@@ -71,10 +72,9 @@ exports.register = async (req, res) => {
 };
 
 const loginSchema = Joi.object({
-  email: Joi.string().min(5).max(255).email().required().messages({
-    "string.email": "El correo electrónico no tiene un formato válido.",
+  email: Joi.string().min(3).max(255).required().messages({
     "string.min": "El correo debe tener al menos {#limit} caracteres.",
-    "any.required": "El correo electrónico es obligatorio.",
+    "any.required": "El correo electrónico o usuario es obligatorio.",
   }),
   password: Joi.string().min(6).max(1024).required().messages({
     "string.min": "La contraseña debe tener al menos {#limit} caracteres.",
@@ -89,7 +89,14 @@ exports.login = async (req, res) => {
   const { email, password } = req.body;
 
   // Verificar si el email existe
-  const user = await User.findOne({ where: { email } });
+  const user = await User.findOne({
+  where: {
+    [Op.or]: [
+      { email },
+      { username: email }
+    ]
+  }
+});
   if (!user) return badRequest(res, "Aún no estas registrado");
 
   // Verificar la contraseña

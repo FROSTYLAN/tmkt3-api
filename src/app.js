@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
+const { createDefaultData } = require("./utils/data-default");
 
 // Cargar variables de entorno
 dotenv.config();
@@ -44,7 +45,10 @@ sequelize
     }
   )
   .then(() => console.log("Modelos sincronizados con la base de datos"))
-  .catch((err) => console.error("Error al sincronizar los modelos", err));
+  .catch((err) => console.error("Error al sincronizar los modelos", err))
+  .finally(() => {
+    // createDefaultData()
+  })
 
 // Configuración de Swagger
 const swaggerOptions = {
@@ -78,3 +82,5 @@ app.use('/api/roles', RoleRoutes);
 // Escuchando puerto de entrada
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+
+
