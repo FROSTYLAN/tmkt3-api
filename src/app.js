@@ -25,11 +25,11 @@ app.use(cors(corsOptions));
 const sequelize = require('./utils/database.util');
 
 // Associations
-// const { Product } = require("./models/product.model");
-// const { Category } = require("./models/category.model");
+const { User } = require("./models/user.model");
+const { Role } = require("./models/role.model");
 
-// Product.belongsTo(Category, { foreignKey: 'categoryId', as: 'categorias' });
-// Category.hasMany(Product, { foreignKey: 'categoryId', as: 'productos' });
+User.belongsTo(Role, { foreignKey: 'roleId', as: 'roles' });
+Role.hasMany(User, { foreignKey: 'roleId', as: 'usuarios' });
 
 // Verificar conexión a la base de datos
 sequelize
@@ -70,10 +70,10 @@ app.get("/", (req, res) => {
 
 // Rutas
 const { AuthRoutes } = require("./routes/auth.routes");
-const { CategoryRoutes } = require('./routes/category.routes');
+const { RoleRoutes } = require('./routes/role.routes');
 
 app.use("/api/auth", AuthRoutes);
-// app.use('/api/categories', CategoryRoutes);
+app.use('/api/roles', RoleRoutes);
 
 // Escuchando puerto de entrada
 const PORT = process.env.PORT || 3000;

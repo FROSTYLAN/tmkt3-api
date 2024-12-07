@@ -37,6 +37,11 @@ const User = sequelize.define(
         len: [5, 255],
       },
     },
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -44,10 +49,14 @@ const User = sequelize.define(
         len: [6, 1024],
       },
     },
+    roleId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    }
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = User;
+module.exports = { User };

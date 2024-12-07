@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/database.util');
 
-const Category = sequelize.define('Category', {
-  categoryId: {
+const Role = sequelize.define('Role', {
+  roleId: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
@@ -10,6 +10,7 @@ const Category = sequelize.define('Category', {
   code: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true
   },
   name: {
     type: DataTypes.STRING,
@@ -18,12 +19,8 @@ const Category = sequelize.define('Category', {
   description: {
     type: DataTypes.STRING,
     allowNull: true,
-  },
-  state: {
-    type: DataTypes.INTEGER,
-    defaultValue: 1
   }
 });
 
-module.exports = { Category };
+module.exports = { Role };
  

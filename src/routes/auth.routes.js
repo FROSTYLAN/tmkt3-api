@@ -36,6 +36,9 @@ const { register, login } = require("../controllers/auth.controller");
  *               phone:
  *                 type: string
  *                 example: "962028767"
+ *               username:
+ *                 type: string
+ *                 example: "DUCZ69"
  *               password:
  *                 type: string
  *                 example: "password123"
