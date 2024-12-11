@@ -31,7 +31,7 @@ async function createDefaultData() {
         name: 'Charles Castillo', 
         jobTitle: 'Gerente General', 
         phone: '977774529', 
-        username: 'cliente69', 
+        username: 'cliente', 
         password: hashedPassword,
         roleId: 1
     })
@@ -41,7 +41,7 @@ async function createDefaultData() {
         name: 'Marcelo Florez', 
         jobTitle: 'Gerente General', 
         phone: '977774529', 
-        username: 'admin69', 
+        username: 'admin', 
         password: hashedPassword,
         roleId: 2
     })
@@ -51,7 +51,7 @@ async function createDefaultData() {
         name: 'Andrei Perez', 
         jobTitle: 'Gerente General', 
         phone: '977774529', 
-        username: 'colab69', 
+        username: 'colab', 
         password: hashedPassword,
         roleId: 3
     })
