@@ -58,6 +58,7 @@ exports.register = async (req, res) => {
     phone,
     username,
     password: hashedPassword,
+    roleId: 1
   });
 
   try {
