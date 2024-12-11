@@ -15,7 +15,7 @@ app.use(express.json());
 
 // Configurar CORS
 const corsOptions = {
-  origin: ['*', 'https://api-template-j8d7.onrender.com', 'http://localhost:34883', 'https://endearing-dusk-6022c7.netlify.app'], // Permitir todos los orígenes
+  origin: ['*', 'https://api-template-j8d7.onrender.com', 'http://localhost:34883', 'https://endearing-dusk-6022c7.netlify.app', 'https://zippy-bavarois-998a45.netlify.app'], // Permitir todos los orígenes
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Permitir cookies y credenciales
   allowedHeaders: ['Content-Type', 'Authorization'], // Permitir estos encabezados
